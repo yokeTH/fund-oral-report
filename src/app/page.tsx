@@ -1,3 +1,5 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import SearchCard from "@/components/search/SearchCard";
 

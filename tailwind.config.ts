@@ -17,42 +17,37 @@ const config: Config = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    // theme: {
-    //   light: {
-    //     ...require("daisyui/src/theming/themes")["[data-theme=cmyk]"],
-    //   },
-    // },
     themes: [
       {
         light: {
-          primary: "#65c3c8",
-          "primary-focus": "#42b2b8",
-          "primary-content": "#ffffff",
+          primary: "#44adee",
+          "primary-focus": "#3999d5",
+          "primary-content": "#000000",
 
-          secondary: "#ef9fbc",
-          "secondary-focus": "#e7739e",
-          "secondary-content": "#ffffff",
+          secondary: "#e74689",
+          "secondary-focus": "#cd3c79",
+          "secondary-content": "#000000",
 
-          accent: "#eeaf3a",
-          "accent-focus": "#e09915",
-          "accent-content": "#ffffff",
+          accent: "#fff12e",
+          "accent-focus": "#ddd12c",
+          "accent-content": "#000000",
 
-          neutral: "#261230",
-          "neutral-focus": "#200f29",
+          neutral: "#1a1a1a",
+          "neutral-focus": "#000000",
           "neutral-content": "#ffffff",
 
-          "base-100": "#faf7f5",
-          "base-200": "#efeae6",
-          "base-300": "#e7e2df",
-          "base-content": "#261230",
+          "base-100": "#ffffff",
+          "base-200": "#f5f5f5",
+          "base-300": "#ebebeb",
+          "base-content": "#000000",
 
-          info: "#1c92f2",
-          success: "#009485",
-          warning: "#ff9900",
-          error: "#ff5724",
+          info: "#4aa8bf",
+          success: "#81328f",
+          warning: "#ed7f31",
+          error: "#e83d30",
 
           "--rounded-box": "1rem",
-          "--rounded-btn": "1.9rem",
+          "--rounded-btn": "0.5rem",
           "--rounded-badge": "1.9rem",
 
           "--animation-btn": "0.25s",
@@ -63,26 +58,26 @@ const config: Config = {
           "--border-btn": "1px",
         },
         dark: {
-          primary: "#f28c18",
-          "primary-focus": "#c9710d",
-          "primary-content": "#131616",
+          primary: "#ffffff",
+          "primary-focus": "#e6e6e6",
+          "primary-content": "#000000",
 
-          secondary: "#6d3b9b",
-          "secondary-focus": "#532c77",
+          secondary: "#152747",
+          "secondary-focus": "#091120",
           "secondary-content": "#ffffff",
 
-          accent: "#4fa300",
-          "accent-focus": "#367000",
+          accent: "#503447",
+          "accent-focus": "#32202c",
           "accent-content": "#ffffff",
 
-          neutral: "#1b1d1d",
-          "neutral-focus": "#131616",
-          "neutral-content": "#ffffff",
+          neutral: "#171618",
+          "neutral-focus": "#2e2d2f",
+          "neutral-content": "#dca54c",
 
-          "base-100": "#1f1f1f",
-          "base-200": "#1b1d1d",
-          "base-300": "#131616",
-          "base-content": "#ffffff",
+          "base-100": "#070708",
+          "base-200": "#171618",
+          "base-300": "#2e2d2f",
+          "base-content": "#dca54c",
 
           info: "#66c7ff",
           success: "#87cf3a",
