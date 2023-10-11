@@ -5,8 +5,10 @@ import axios from "axios";
 import FormData from "form-data";
 import UploadSuccess from "@/components/aleart/uploadSuccess";
 import UploadError from "@/components/aleart/uploadError";
+import dotenv from 'dotenv'
 
 export default function Upload() {
+  dotenv.config()
   const [file, setFile] = useState<File>();
   const [status, setStatus] = useState(false);
   const [error, setError] = useState(false);

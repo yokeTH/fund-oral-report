@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+
 const compare = (a: any, b: any) => {
   let fa = a.videoTitle.split(" ") as string[];
   let fb = b.videoTitle.split(" ") as string[];
@@ -10,7 +12,7 @@ const compare = (a: any, b: any) => {
 };
 
 export const getData = async (id: string) => {
-  const url = process.env.NEXT_PUBLIC_SEARCH_URL + id;
+  const url = (process.env.NEXT_PUBLIC_SEARCH_URL || process.env.SEARCH_URL) + id;
   const req = fetch(url);
   const result = await (await req).json();
   if (result.data == null) return result;

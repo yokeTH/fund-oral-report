@@ -11,6 +11,7 @@ import SearchCardSmall from "@/components/search/SearchCardSmall";
 import MultipleSecWarning from "@/components/aleart/multipleSecWarning";
 import NotFoundWarning from "@/components/aleart/NotFoundWarning";
 
+
 export default function Result() {
   const path = usePathname().slice(1);
   const [exp, setExp] = useState<boolean>(false);
