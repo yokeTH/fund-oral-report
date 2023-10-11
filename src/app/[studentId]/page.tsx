@@ -1,6 +1,5 @@
 "use client";
 
-import dotenv from "dotenv";
 import Footer from "@/components/Footer";
 import Table from "@/components/result/Table";
 import Info from "@/components/result/info";
@@ -13,7 +12,6 @@ import MultipleSecWarning from "@/components/aleart/multipleSecWarning";
 import NotFoundWarning from "@/components/aleart/NotFoundWarning";
 
 export default function Result() {
-  dotenv.config()
   const path = usePathname().slice(1);
   const [exp, setExp] = useState<boolean>(false);
   const [data, setData] = useState<Response>();
