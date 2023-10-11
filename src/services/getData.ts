@@ -12,7 +12,6 @@ const compare = (a: any, b: any) => {
 };
 
 export const getData = async (id: string) => {
-  dotenv.config()
   const url = process.env.NEXT_PUBLIC_SEARCH_URL || process.env.SEARCH_URL + id;
   const req = fetch(url);
   const result = await (await req).json();
