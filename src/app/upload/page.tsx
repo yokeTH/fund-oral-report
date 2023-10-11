@@ -25,7 +25,7 @@ export default function Upload() {
 
     let config = {
       method: "post",
-      url: process.env.NEXT_PUBLIC_UPLOAD_URL,
+      url: process.env.UPLOAD_URL,
       data: data,
     };
 
