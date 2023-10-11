@@ -60,7 +60,7 @@ export default function Result() {
       {notFound ? <NotFoundWarning /> : ""}
 
       {/* Content Page */}
-      {process.env.NEXT_PUBLIC_SEARCH_URL || "SSSS"}
+      {process.env.NEXT_PUBLIC_SEARCH_URL || process.env.SEARCH_URL}
       <div className="container mx-auto p-3 lg:max-2xl:flex">
         <div className="w-full block lg:max-2xl:inline lg:max-2xl:w-3/12 lg:max-2xl:pr-2">
           <SearchCardSmall />
