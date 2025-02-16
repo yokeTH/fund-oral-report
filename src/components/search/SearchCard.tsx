@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { FormEventHandler } from "react";
+import Image from "next/image";
 export default function SearchCard() {
   const router = useRouter();
   const mock: FormEventHandler<HTMLFormElement> = (e) => {
@@ -13,7 +14,7 @@ export default function SearchCard() {
       <div className="card shadow-md mt-3 bg-base-200">
         <div className="card-body">
           <h2 className="card-title text-base-content">
-            ตรวจสอบ % วิดีโอ วิชา Fund Oral
+            ตรวจสอบ % วิดีโอ วิชา Fund Oral <Image src="/3200106.svg" alt={""} width={28} height={28} className="animate-bounce"/>
           </h2>
           <form onSubmit={mock}>
             <input

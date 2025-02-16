@@ -1,80 +1,55 @@
-import { Section } from "@/interfaces/response";
-import { MouseEventHandler, use, useEffect, useState } from "react";
+import { GetResponse } from "@/types/response";
 
-interface Props {
-  data?: Section[];
+interface RadialProgressProps {
+  percentage: number;
 }
 
-export default function Table({ data }: Props) {
-  const [sec, setSec] = useState<string>();
-  const secBtnClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-    setSec(e.currentTarget.value);
-  };
-  useEffect(() => {
-    if (data && data.length == 1) {
-      setSec(data[0].sectionName);
-    }
-  }, [data]);
+const RadialProgress: React.FC<RadialProgressProps> = ({ percentage }) => (
+  <div className="radial-progress text-primary group-hover:text-primary-content group-hover:scale-110 transition-transform" style={{ "--value" : percentage, "--size": "4rem" } as React.CSSProperties} role="progressbar">
+    {percentage}%
+  </div>
+);
+
+export default function Table(props: { data: GetResponse | null }) {
   return (
     <div className="card shadow-md z-0 bg-base-200">
-      <div className="card-body box-border box-border">
-        {/* SECTION */}
-        <div>
+      <div className="card-body box-border" style={{"padding": "1.5rem"}}>
+        {/* <div>
           <p className="inline">sec : </p>
-          {data ? (
-            data.map((e) => (
-              <button
-                className={`btn ${
-                  sec == e.sectionName ? "bg-primary" : "bg-base-300"
-                }
-                hover:bg-primary-focus
-                border inline
-                `}
-                value={e.sectionName}
-                onClick={secBtnClick}
-              >
-                {e.sectionName}
-              </button>
-            ))
-          ) : (
-            // skeleton
-            <button className="btn bg-base-300 border inline">
-              <div className="animate-pulse h-2 bg-primary-content rounded w-8 h-4 "></div>
-            </button>
-          )}
-        </div>
+          <button className="btn bg-base-300 border inline">
+            <div className="animate-pulse bg-primary-content rounded w-8 h-4 "></div>
+          </button>
+        </div> */}
 
         <table className="table">
-          {/* head */}
           <thead>
             <tr className="bg-primary text-lg text-primary-content">
-              <th>Video Title</th>
-              <th>%</th>
+              <th className="w-2/12 text-center">#</th>
+              <th className="w-10/12 text-center">Title</th>
+              <th className="w-2/12 text-center">%</th>
             </tr>
           </thead>
           <tbody>
-            {sec && data ? (
-              data
-                .filter((e) => e.sectionName == sec)[0]
-                .sectionVideoData.map((e) => (
-                  <tr className="hover:bg-primary-focus">
-                    <td className="w-8/12">{e.videoTitle}</td>
-                    <td className="w-4/12">{e.percentage}</td>
-                  </tr>
-                ))
+            {props.data ? (
+              props.data.report.map((e) => (
+                <tr key={e.id} className="group transition-transform hover:bg-primary">
+                  <td className="text-center">
+                    <div className="group-hover:scale-100">
+                      <img className="group-hover:scale-110 group-hover:rounded-md transition-transform" src={`https://cfvod.kaltura.com/p/2910381/sp/291038100/thumbnail/entry_id/${e.videoId}/version/100001/width/478/height/269/width/478/height/269/type/3/quality/100`} />
+                    </div>
+                  </td>
+                  <td className="text-center group-hover:text-primary-content group-hover:scale-115 transition-transform">
+                    <span className="text-ellipsis">
+                      {e.video.title ? e.video.title : e.videoId}
+                    </span>
+                  </td>
+                  <td className="text-center">
+                    <RadialProgress percentage={e.percentage}/>
+                  </td>
+                </tr>
+              ))
             ) : (
-              <>
-                {Array.from(Array(3).keys()).map((e) => (
-                  <tr key={e}>
-                    <td className="w-8/12">
-                      <div className="animate-pulse h-2 bg-primary-content rounded"></div>
-                    </td>
-                    <td className="w-4/12">
-                      <div className="animate-pulse h-2 bg-primary-content rounded"></div>
-                    </td>
-                  </tr>
-                ))}
-              </>
+              <></>
             )}
           </tbody>
         </table>

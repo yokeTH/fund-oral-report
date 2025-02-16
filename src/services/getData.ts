@@ -1,4 +1,5 @@
-import dotenv from "dotenv";
+import { GetResponse } from "@/types/response";
+import path from "path";
 
 const compare = (a: any, b: any) => {
   let fa = a.videoTitle.split(" ") as string[];
@@ -12,22 +13,16 @@ const compare = (a: any, b: any) => {
 };
 
 export const getData = async (id: string) => {
-  const url = (process.env.NEXT_PUBLIC_SEARCH_URL || process.env.SEARCH_URL) + id;
-  const req = fetch(url);
-  const result = await (await req).json();
-  if (result.data == null) return result;
-  result.data.sections = Object.keys(result.data.sections).map((key) => ({
-    sectionName: key,
-    sectionVideoData: result.data.sections[key].map(
-      (e: { video: any; percentage: any }) => ({
-        videoTitle: e.video,
-        percentage: e.percentage,
-      })
-    ),
-  }));
-  result.data.updateAt = result.data.updateTime;
-  result.data.sections.forEach((e: any) => {
-    e.sectionVideoData.sort(compare);
+  // const url = (process.env.NEXT_PUBLIC_SEARCH_URL || process.env.SEARCH_URL) + id;
+  const url = path.join(process.env.NEXT_PUBLIC_SEARCH_URL || process.env.SEARCH_URL as string, id);
+  const req = await fetch(url,{
+    cache: 'no-store'
   });
-  return await result;
+  try{
+    const res = await req.json();
+    console.log('student',res)
+    return res as GetResponse | null;
+  }catch{
+    return null;
+  }
 };

@@ -22,7 +22,7 @@ const config: Config = {
         light: {
           primary: "#44adee",
           "primary-focus": "#3999d5",
-          "primary-content": "#000000",
+          "primary-content": "#ffffff",
 
           secondary: "#e74689",
           "secondary-focus": "#cd3c79",

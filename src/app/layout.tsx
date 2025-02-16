@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Kanit, Noto_Sans_Thai } from "next/font/google";
@@ -19,7 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={notoSansThai.className}>{children}</body>
+        <body className={notoSansThai.className}>
+          <div className="container mx-auto p-3">
+
+          {children}
+
+          </div>
+        <Footer />
+      </body>
     </html>
   );
 }
